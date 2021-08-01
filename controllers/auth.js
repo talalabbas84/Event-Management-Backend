@@ -9,17 +9,46 @@ const asynchandler = require(`../middleware/async`);
 //@route POST /api/v1/auth/register
 // @access Public
 exports.register = asynchandler(async (req, res) => {
-  console.log(req.body);
   const { name, email, password, role } = req.body;
-  //Create user
+
+  // Create user
   const user = await User.create({
-    name,
+    firstName,
+    lastName,
+    phoneNo,
     email,
     password,
     role,
   });
 
-  sendTokenResponse(user, 200, res);
+  // grab token and send to email
+  const confirmEmailToken = user.generateEmailConfirmToken();
+
+  // Create reset url
+  const confirmEmailURL = `${req.protocol}://${req.get(
+    "host"
+  )}/api/v1/auth/confirmemail?token=${confirmEmailToken}`;
+
+  const message = `You are receiving this email because you need to confirm your email address. Please make a GET request to: \n\n ${confirmEmailURL}`;
+
+  user.save({ validateBeforeSave: false });
+  try {
+    await sendEmail({
+      email: user.email,
+      subject: "Email Confirmation Token",
+      message,
+    });
+    sendTokenResponse(user, 200, res);
+  } catch (err) {
+    await user.remove();
+
+    return next(
+      new ErrorResponse(
+        `Email could not be sent. Try Signing up Again after some time.`,
+        500
+      )
+    );
+  }
 });
 
 // @desc Login user

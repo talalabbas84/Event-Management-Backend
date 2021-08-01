@@ -3,7 +3,11 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const userSchema = new mongoose.Schema({
-  name: {
+  firstName: {
+    type: String,
+    required: [true, "Please Add a name"],
+  },
+  lastName: {
     type: String,
     required: [true, "Please Add a name"],
   },
@@ -16,9 +20,13 @@ const userSchema = new mongoose.Schema({
       "Please add a valid email",
     ],
   },
+  phoneNo: {
+    type: String,
+    required: [true, "Please add Phone Number"],
+  },
   role: {
     type: String,
-    enum: ["user", "publisher"],
+    enum: ["user", "vendor", "admin"],
     default: "user",
   },
   password: {
@@ -36,7 +44,7 @@ const userSchema = new mongoose.Schema({
 });
 
 //Encrypt password using bcrypt
-userSchema.pre("save", async function (next) {
+userSchema.pre("save", async function(next) {
   if (!this.isModified("password")) {
     next();
   }
@@ -45,19 +53,19 @@ userSchema.pre("save", async function (next) {
 });
 
 // Sign JWT and return
-userSchema.methods.getSignedJwtToken = function () {
+userSchema.methods.getSignedJwtToken = function() {
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRE,
   });
 };
 
 // Match user entered password to hashed password in database
-userSchema.methods.matchPassword = async function (enteredPassword) {
+userSchema.methods.matchPassword = async function(enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
 // Generate and hash password token
-userSchema.methods.getResetPasswordToken = function () {
+userSchema.methods.getResetPasswordToken = function() {
   //Generate token
   const resetToken = crypto.randomBytes(20).toString("hex");
   // hash token and set to resetPasswordToken field
@@ -70,4 +78,20 @@ userSchema.methods.getResetPasswordToken = function () {
 
   return resetToken;
 };
+
+// Generate email confirm token
+userSchema.methods.generateEmailConfirmToken = function(next) {
+  // email confirmation token
+  const confirmationToken = crypto.randomBytes(20).toString("hex");
+
+  this.confirmEmailToken = crypto
+    .createHash("sha256")
+    .update(confirmationToken)
+    .digest("hex");
+
+  const confirmTokenExtend = crypto.randomBytes(100).toString("hex");
+  const confirmTokenCombined = `${confirmationToken}.${confirmTokenExtend}`;
+  return confirmTokenCombined;
+};
+
 module.exports = mongoose.model("User", userSchema);
