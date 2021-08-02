@@ -38,8 +38,8 @@ exports.register = asynchandler(async (req, res) => {
       subject: "Email Confirmation Token",
       message,
     });
-    return res.redirect("http://localhost:3000/");
-    // sendTokenResponse(user, 200, res);
+
+    sendTokenResponse(user, 200, res);
   } catch (err) {
     await user.remove();
 
@@ -87,8 +87,9 @@ exports.confirmEmail = asynchandler(async (req, res, next) => {
   // save
   user.save({ validateBeforeSave: false });
 
+  return res.redirect("http://localhost:3000/");
   // return token
-  sendTokenResponse(user, 200, res);
+  // sendTokenResponse(user, 200, res);
 });
 
 // @desc Login user
@@ -104,6 +105,7 @@ exports.login = asynchandler(async (req, res, next) => {
 
   //Check for user
   const user = await User.findOne({ email }).select("+password");
+
   if (!user) {
     return next(new ErrorResponse("Invalid credentials", 401));
   }
@@ -114,8 +116,13 @@ exports.login = asynchandler(async (req, res, next) => {
   if (!isMatch) {
     return next(new ErrorResponse("Invalid credentials", 401));
   }
-
-  sendTokenResponse(user, 200, res);
+  if (user.isEmailConfirmed) {
+    sendTokenResponse(user, 200, res);
+  } else {
+    return next(
+      new ErrorResponse("Please verify your account before logging in", 401)
+    );
+  }
 });
 
 // @desc Log user out/ clear cookie
