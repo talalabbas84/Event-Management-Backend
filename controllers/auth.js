@@ -38,7 +38,8 @@ exports.register = asynchandler(async (req, res) => {
       subject: "Email Confirmation Token",
       message,
     });
-    sendTokenResponse(user, 200, res);
+    return res.redirect("http://localhost:3000/");
+    // sendTokenResponse(user, 200, res);
   } catch (err) {
     await user.remove();
 
@@ -57,6 +58,7 @@ exports.register = asynchandler(async (req, res) => {
  * @access  Public
  */
 exports.confirmEmail = asynchandler(async (req, res, next) => {
+  return res.redirect("http://localhost:3000/");
   const { token } = req.query;
 
   if (!token) {
