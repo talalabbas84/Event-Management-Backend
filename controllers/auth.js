@@ -58,7 +58,6 @@ exports.register = asynchandler(async (req, res) => {
  * @access  Public
  */
 exports.confirmEmail = asynchandler(async (req, res, next) => {
-  return res.redirect("http://localhost:3000/");
   const { token } = req.query;
 
   if (!token) {
