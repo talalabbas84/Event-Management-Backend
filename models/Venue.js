@@ -108,4 +108,4 @@ const venueSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Town", venueSchema);
+module.exports = mongoose.model("Venue", venueSchema);
