@@ -18,6 +18,7 @@ const bodyParser = require("body-parser");
 const users = require(`./routes/users`);
 const auth = require(`./routes/auth`);
 const venue = require(`./routes/venue`);
+const town = require(`./routes/town`);
 const connectDb = require(`./config/db`);
 const errorHandler = require(`./middleware/error`);
 
@@ -78,7 +79,7 @@ if (cluster.isMaster) {
   //   app.use(`/api/v1/courses`, courses);
   app.use(`/api/v1/auth`, auth);
   app.use(`/api/v1/venue`, venue);
-  //   app.use(`/api/v1/users`, users);
+  app.use(`/api/v1/town`, town);
   //   app.use(`/api/v1/reviews`, reviews);
 
   app.use(errorHandler);

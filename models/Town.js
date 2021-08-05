@@ -21,8 +21,3 @@ const townSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("Town", townSchema);
-
-// city: "Karachi",
-//     town: "Malir",
-//     area: "Saadi Garden",
-//     status: "Y",
