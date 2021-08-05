@@ -6,7 +6,7 @@ const asynchandler = require(`../middleware/async`);
 //@route GET /api/v1/venue
 // @access Private/Admin
 exports.getVenues = asynchandler(async (req, res, next) => {
-  const venues = await Veneu.find({});
+  const venues = await Venue.find({});
   res.status(200).json({ success: true, data: venues });
 });
 
