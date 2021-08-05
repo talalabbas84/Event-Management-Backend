@@ -97,10 +97,10 @@ const venueSchema = new mongoose.Schema({
       type: Boolean,
       default: false,
     },
-    images: {
-      type: [String],
-      required: [true, "Please upload atleast one image"],
-    },
+  },
+  images: {
+    type: [String],
+    required: [true, "Please upload atleast one image"],
   },
   createdAt: {
     type: Date,
