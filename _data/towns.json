@@ -1,0 +1,500 @@
+[
+  {
+    "city": "Karachi",
+    "town": "Baldia Town",
+    "area": "Abidabad",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Baldia Town",
+    "area": "Afridi Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Baldia Town",
+    "area": "Baldia Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Baldia Town",
+    "area": "Bismillah Chowk",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Baldia Town",
+    "area": "Kumhar Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Baldia Town",
+    "area": "Delhi Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Baldia Town",
+    "area": "Dhoraji Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Baldia Town",
+    "area": "Gujrat Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Baldia Town",
+    "area": "Gulshan-e-Ghazi",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Baldia Town",
+    "area": "Islamnagar",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Baldia Town",
+    "area": "Ittehad Town",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Baldia Town",
+    "area": "Kokan Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Baldia Town",
+    "area": "Muhajir Camp",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Baldia Town",
+    "area": "Muslim Mujahid Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Baldia Town",
+    "area": "Nai Abadi",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Baldia Town",
+    "area": "Naval Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Baldia Town",
+    "area": "Rasheedabad",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Baldia Town",
+    "area": "Saeedabad",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Bin Qasim Town",
+    "area": "Abdullah Goth",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Bin Qasim Town",
+    "area": "Cattle Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Bin Qasim Town",
+    "area": "Gaghar",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Bin Qasim Town",
+    "area": "Green Park City",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Bin Qasim Town",
+    "area": "Gulshan-e-Hadeed",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Bin Qasim Town",
+    "area": "Ibrahim Hyderi",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Bin Qasim Town",
+    "area": "Landhi Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Bin Qasim Town",
+    "area": "Mujahid Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Bin Qasim Town",
+    "area": "Quaidabad",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Bin Qasim Town",
+    "area": "Razzaqabad",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Bin Qasim Town",
+    "area": "Rehri Goth",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Bin Qasim Town",
+    "area": "Shah Latif Town",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Bin Qasim Town",
+    "area": "Sherpao Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Bin Qasim Town",
+    "area": "Steel Town",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Bin Qasim Town",
+    "area": "Shah Bhitaie Town",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulshan Town",
+    "area": "Civic Centre",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulshan Town",
+    "area": "Delhi Mercantile Society",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulshan Town",
+    "area": "Eissa Nagri",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulshan Town",
+    "area": "Gillani railway station",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulshan Town",
+    "area": "Gulistan-e-Johar",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulshan Town",
+    "area": "Gulshan-e-Iqbal I",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulshan Town",
+    "area": "Gulshan-e-Iqbal II",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulshan Town",
+    "area": "Gulzar-e-Hijri",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulshan Town",
+    "area": "Jamali Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulshan Town",
+    "area": "Metroville Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulshan Town",
+    "area": "Pehlwan Goth",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulshan Town",
+    "area": "P.I.B. Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulshan Town",
+    "area": "Safooran Goth",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulshan Town",
+    "area": "Shanti Nagar",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Jamshed Town",
+    "area": "Akhtar Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Jamshed Town",
+    "area": "Azam Basti",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Jamshed Town",
+    "area": "Central Jacob Lines",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Jamshed Town",
+    "area": "Chanesar Goth",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Jamshed Town",
+    "area": "Garden East",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Jamshed Town",
+    "area": "Jamshed Quarters",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Jamshed Town",
+    "area": "Jut Line",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Jamshed Town",
+    "area": "Mahmudabad",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Jamshed Town",
+    "area": "Manzoor Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Jamshed Town",
+    "area": "Pakistan Quarters",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Jamshed Town",
+    "area": "P.E.C.H.S.",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Jamshed Town",
+    "area": "P.E.C.H.S. II",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Jamshed Town",
+    "area": "Soldier Bazar",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulberg Town",
+    "area": "Samanabad",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulberg Town",
+    "area": "Aisha Manzil",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulberg Town",
+    "area": "Ancholi",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulberg Town",
+    "area": "Azizabad",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulberg Town",
+    "area": "Karimabad",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulberg Town",
+    "area": "Shafiq Mill Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulberg Town",
+    "area": "Naseerabad",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulberg Town",
+    "area": "Water Pump",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulberg Town",
+    "area": "Yaseenabad",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulberg Town",
+    "area": "Musa Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulberg Town",
+    "area": "Dastagir Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Gulberg Town",
+    "area": "Hussainabad",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Malir",
+    "area": "Gharibabad",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Malir",
+    "area": "Ghazi Brohi Goth",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Malir",
+    "area": "Jafar-e-Tayyar",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Malir",
+    "area": "Kala Board",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Malir",
+    "area": "Khokhra Par",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Malir",
+    "area": "Model Colony",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Malir",
+    "area": "Saadi Town",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Malir",
+    "area": "Saadi Garden",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Malir",
+    "area": "Saudabad",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Malir",
+    "area": "Usmanabad",
+    "status": true
+  },
+  {
+    "city": "Karachi",
+    "town": "Malir",
+    "area": "Bahria Town Karachi",
+    "status": true
+  }
+]

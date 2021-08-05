@@ -6,7 +6,6 @@ const asynchandler = require(`../middleware/async`);
 //@route GET /api/v1/auth/users
 // @access Private/Admin
 exports.getUsers = asynchandler(async (req, res, next) => {
-  console.log("idhar");
   res.status(200).json(res.advancedResults);
 });
 
