@@ -102,6 +102,11 @@ const venueSchema = new mongoose.Schema({
     type: [String],
     required: [true, "Please upload atleast one image"],
   },
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+    required: [true, "Please select user"],
+  },
   createdAt: {
     type: Date,
     default: Date.now,
