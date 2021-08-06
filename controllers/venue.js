@@ -43,12 +43,15 @@ exports.addVenue = asynchandler(async (req, res, next) => {
     const results = Promise.all(promises).then(async () => {
       const { venue } = req.body;
       console.log(req.user._id);
-      venue.images = url;
-      venue.user = req.user._id;
+
       console.log(venue);
-      // console.log(...JSON.parse(venue));
+      const JSONVenue = JSON.parse(venue);
+      JSONVenue.images = url;
+      JSONVenue.user = req.user._id;
+      // const newvenue = {...JSONVenue , user }
+      // console.log({...venue});
       // console.log({ ...JSON.parse(venue) });
-      const venueData = await Venue.create(JSON.parse(venue));
+      const venueData = await Venue.create(JSONVenue);
       return res.status(200).json({
         success: true,
         venue: venueData,
