@@ -56,7 +56,7 @@ const venueSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Please add venue capacity"],
   },
-  venueFacility: {
+  venueFacilities: {
     type: [String],
     required: [true, "please select atleast one facility"],
   },
