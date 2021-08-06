@@ -57,46 +57,8 @@ const venueSchema = new mongoose.Schema({
     required: [true, "Please add venue capacity"],
   },
   venueFacility: {
-    segregation: {
-      type: Boolean,
-      default: false,
-    },
-    catering: {
-      type: Boolean,
-      default: false,
-    },
-    projector: {
-      type: Boolean,
-      default: false,
-    },
-    stageDecoration: {
-      type: Boolean,
-      default: false,
-    },
-    waitering: {
-      type: Boolean,
-      default: false,
-    },
-    musicSystem: {
-      type: Boolean,
-      default: false,
-    },
-    specialLight: {
-      type: Boolean,
-      default: false,
-    },
-    airConditioner: {
-      type: Boolean,
-      default: false,
-    },
-    standbyGenerator: {
-      type: Boolean,
-      default: false,
-    },
-    parking: {
-      type: Boolean,
-      default: false,
-    },
+    type: [String],
+    required: [true, "please select atleast one facility"],
   },
   images: {
     type: [String],
