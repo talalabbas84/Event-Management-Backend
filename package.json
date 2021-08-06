@@ -13,6 +13,7 @@
         "babel-plugin-generator-prettier": "^1.2.0",
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.19.0",
+        "cloudinary": "^1.26.3",
         "colors": "^1.4.0",
         "concurrently": "^5.2.0",
         "cookie-parser": "^1.4.5",
@@ -25,6 +26,7 @@
         "helmet": "^3.22.0",
         "hpp": "^0.2.3",
         "jsonwebtoken": "^8.5.1",
+        "lodasync": "^1.0.7",
         "mongoose": "^5.9.10",
         "morgan": "^1.10.0",
         "node-geocoder": "^3.27.0",
@@ -32,6 +34,7 @@
         "nodemailer-sendgrid": "^1.0.3",
         "redis": "^3.0.2",
         "slugify": "^1.4.0",
+        "uuid": "^8.3.2",
         "xss-clean": "^0.1.1"
     },
     "author": "",

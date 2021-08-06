@@ -13,7 +13,7 @@ const {
 router
   .route("/")
   .get(getVenues)
-  .post(protect, authorize("vendor"), addVenue);
+  .post(addVenue);
 
 router
   .route("/:id")

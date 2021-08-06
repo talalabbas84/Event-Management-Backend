@@ -1,6 +1,7 @@
 const Venue = require(`../models/Venue`);
 const ErrorResponse = require(`../utils/errorResponse`);
 const asynchandler = require(`../middleware/async`);
+const uploadMedia = require(`../utils/uploadMedia`);
 
 // @desc Get venues
 //@route GET /api/v1/venue
@@ -32,11 +33,35 @@ exports.getVenue = asynchandler(async (req, res, next) => {
 //@route POST /api/v1/venue
 // @access Private
 exports.addVenue = asynchandler(async (req, res, next) => {
-  const venue = await Venue.create(req.body.venue);
-  res.status(200).json({
-    success: true,
-    data: venue,
-  });
+  let url = [];
+  if (req.files && req.files.media) {
+    const promises = req.files.media.map(async (media) => {
+      const url1 = await uploadMedia(media, "venue-bazaar");
+      url.push(url1.res.url);
+    });
+
+    const results = Promise.all(promises).then(async () => {
+      const { venue } = req.body;
+      venue.images = url;
+      console.log(venue);
+      const venueData = await Venue.create({ ...venue });
+      return res.status(200).json({
+        success: true,
+        venue: venueData,
+      });
+    });
+  } else {
+    return next(new ErrorResponse(`Please upload atleast one image`), 404);
+  }
+  // const venue = await Venue.create(req.body.venue);
+  // if (req.files.media) {
+  //   // console.log(req.files.media, "medioaia");
+  //   // res.status(200).json({
+  //   //   success: true,
+  //   //   data: venue,
+  //   // });
+  // } else {
+  // }
 });
 
 // @desc Update venue
