@@ -7,7 +7,7 @@ const uploadMedia = require(`../utils/uploadMedia`);
 //@route GET /api/v1/venue
 // @access Private/Admin
 exports.getVenues = asynchandler(async (req, res, next) => {
-  const venues = await Venue.find({});
+  const venues = await Venue.find({}).populate("user venueTown");
   res.status(200).json({ success: true, data: venues });
 });
 
