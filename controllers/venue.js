@@ -16,7 +16,7 @@ exports.getVenues = asynchandler(async (req, res, next) => {
 // @access Public
 exports.getVenue = asynchandler(async (req, res, next) => {
   const venue = await Venue.findById(req.params.id).populate({
-    path: "venueTown",
+    path: "venueTown user",
   });
 
   if (!venue) {
