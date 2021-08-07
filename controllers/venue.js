@@ -11,6 +11,17 @@ exports.getVenues = asynchandler(async (req, res, next) => {
   res.status(200).json({ success: true, data: venues });
 });
 
+// @desc Get venues by vendor Id
+//@route GET /api/v1/venue/vendor/:id
+// @access Private/Admin
+exports.getVenuesByVendorID = asynchandler(async (req, res, next) => {
+  const venues = await Venue.find({ user: req.params.id }).populate(
+    "user venueTown"
+  );
+
+  res.status(200).json({ success: true, data: venues });
+});
+
 // @desc Get single venue
 //@route GET /api/v1/venue/:id
 // @access Public

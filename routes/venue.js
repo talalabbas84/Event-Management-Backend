@@ -8,12 +8,15 @@ const {
   updateVenue,
   addVenue,
   deleteVenue,
+  getVenuesByVendorID,
 } = require(`../controllers/venue`);
 
 router
   .route("/")
   .get(getVenues)
   .post(protect, authorize("vendor"), addVenue);
+
+router.route("/vendor/:id").get(getVenuesByVendorID);
 
 router
   .route("/:id")
