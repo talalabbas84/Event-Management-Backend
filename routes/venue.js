@@ -18,7 +18,7 @@ router
   .post(protect, authorize("vendor"), addVenue);
 
 router.route("/vendor/:id").get(getVenuesByVendorID);
-router.route("/image/:id").get(addImageToVenue);
+router.route("/image/:id").post(addImageToVenue);
 
 router
   .route("/:id")
