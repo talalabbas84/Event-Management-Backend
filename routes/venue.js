@@ -10,6 +10,7 @@ const {
   deleteVenue,
   getVenuesByVendorID,
   addImageToVenue,
+  RemoveImageFromVenue,
 } = require(`../controllers/venue`);
 
 router
@@ -18,7 +19,7 @@ router
   .post(protect, authorize("vendor"), addVenue);
 
 router.route("/vendor/:id").get(getVenuesByVendorID);
-router.route("/image/:id").post(addImageToVenue);
+router.route("/image/:id").post(addImageToVenue).put(RemoveImageFromVenue);
 
 router
   .route("/:id")

@@ -142,3 +142,29 @@ exports.addImageToVenue = asynchandler(async (req, res, next) => {
       return next(new ErrorResponse(`Upload image`), 404);
   }
 });
+
+
+// @desc Delete an image
+//@route Delete /api/v1/venue/image/:id
+// @access Private
+exports.RemoveImageFromVenue = asynchandler(async (req, res, next) => {
+ 
+  let venue = await Venue.findById(req.params.id);
+
+  if (!venue) {
+    return next(new ErrorResponse(`No venue found`), 404);
+  }
+    
+      venue = await Venue.findByIdAndUpdate(req.params.id, { $pull: { images: req.body.url }}, {
+        new: true,
+        runValidators: true,
+      });
+    
+      res.status(200).json({
+        success: true,
+        data: venue,
+       
+      });
+
+
+});
