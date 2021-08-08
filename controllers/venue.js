@@ -83,6 +83,7 @@ exports.updateVenue = asynchandler(async (req, res, next) => {
     return next(new ErrorResponse(`No venue found`), 404);
   }
 
+  console.log(req.body.venue, 'venue')
   venue = await Venue.findByIdAndUpdate(req.params.id, req.body.venue, {
     new: true,
     runValidators: true,
@@ -148,13 +149,10 @@ exports.addImageToVenue = asynchandler(async (req, res, next) => {
 //@route Delete /api/v1/venue/image/:id
 // @access Private
 exports.RemoveImageFromVenue = asynchandler(async (req, res, next) => {
- 
   let venue = await Venue.findById(req.params.id);
-
   if (!venue) {
     return next(new ErrorResponse(`No venue found`), 404);
   }
-    
       venue = await Venue.findByIdAndUpdate(req.params.id, { $pull: { images: req.body.url }}, {
         new: true,
         runValidators: true,
@@ -165,6 +163,4 @@ exports.RemoveImageFromVenue = asynchandler(async (req, res, next) => {
         data: venue,
        
       });
-
-
 });
