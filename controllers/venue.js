@@ -114,24 +114,29 @@ exports.deleteVenue = asynchandler(async (req, res, next) => {
 //@route Delete /api/v1/venue/image/:id
 // @access Private
 exports.addImageToVenue = asynchandler(async (req, res, next) => {
+  console.log(req.files.media)
   if (req.files && req.files.media) { 
   let venue = await Venue.findById(req.params.id);
 
   if (!venue) {
     return next(new ErrorResponse(`No venue found`), 404);
   }
-   const url = await uploadMedia(req.files.media, "venue-bazaar");
-
-  venue = await Venue.findByIdAndUpdate(req.params.id, { $push: { images: url.url }}, {
-    new: true,
-    runValidators: true,
-  });
-
-  res.status(200).json({
-    success: true,
-    data: venue,
-    url: url.url
-  });
+    const url = await uploadMedia(req.files.media, "venue-bazaar");
+    if (url && url.res && url.res.url) {
+    
+      venue = await Venue.findByIdAndUpdate(req.params.id, { $push: { images: url.res.url }}, {
+        new: true,
+        runValidators: true,
+      });
+    
+      res.status(200).json({
+        success: true,
+        data: venue,
+        url: url.url
+      });
+    } else {
+        return next(new ErrorResponse(`Error with file upload`), 404);
+  }
   }
   else {
       return next(new ErrorResponse(`Upload image`), 404);
