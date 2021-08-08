@@ -18,7 +18,6 @@ exports.getVenuesByVendorID = asynchandler(async (req, res, next) => {
   const venues = await Venue.find({ user: req.params.id }).populate(
     "user venueTown"
   );
-
   res.status(200).json({ success: true, data: venues });
 });
 
@@ -71,15 +70,7 @@ exports.addVenue = asynchandler(async (req, res, next) => {
   } else {
     return next(new ErrorResponse(`Please upload atleast one image`), 404);
   }
-  // const venue = await Venue.create(req.body.venue);
-  // if (req.files.media) {
-  //   // console.log(req.files.media, "medioaia");
-  //   // res.status(200).json({
-  //   //   success: true,
-  //   //   data: venue,
-  //   // });
-  // } else {
-  // }
+
 });
 
 // @desc Update venue
@@ -116,5 +107,28 @@ exports.deleteVenue = asynchandler(async (req, res, next) => {
   res.status(200).json({
     success: true,
     data: {},
+  });
+});
+
+// @desc Add an image
+//@route Delete /api/v1/venue/image/:id
+// @access Private
+exports.addImageToVenue = asynchandler(async (req, res, next) => {
+  let venue = await Venue.findById(req.params.id);
+
+  if (!venue) {
+    return next(new ErrorResponse(`No venue found`), 404);
+  }
+   const url = await uploadMedia(media, "venue-bazaar");
+
+  venue = await Venue.findByIdAndUpdate(req.params.id, { $push: { images: url.url }}, {
+    new: true,
+    runValidators: true,
+  });
+
+  res.status(200).json({
+    success: true,
+    data: venue,
+    url: url.url
   });
 });
