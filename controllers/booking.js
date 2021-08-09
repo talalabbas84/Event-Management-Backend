@@ -6,7 +6,9 @@ const Booking = require("../models/Booking");
 //@route GET /api/v1/booking/vendor/:id
 // @access Public
 exports.getAllBookingsByVendor = asynchandler(async (req, res, next) => {
-  const bookings = await Booking.find({ vendor: req.params.id });
+  const bookings = await Booking.find({ vendor: req.params.id }).populate(
+    "venue bookingBy vendor"
+  );
   res
     .status(200)
     .json({ success: true, count: bookings.length, bookings: bookings });
@@ -16,7 +18,9 @@ exports.getAllBookingsByVendor = asynchandler(async (req, res, next) => {
 //@route GET /api/v1/booking/venue/:id
 // @access Public
 exports.getAllBookingsByVenue = asynchandler(async (req, res, next) => {
-  const bookings = await Booking.find({ venue: req.params.id });
+  const bookings = await Booking.find({ venue: req.params.id }).populate(
+    "venue bookingBy vendor"
+  );
   res
     .status(200)
     .json({ success: true, count: bookings.length, bookings: bookings });
@@ -49,6 +53,8 @@ exports.createBooking = asynchandler(async (req, res, next) => {
   bookingData.bookingBy = req.user._id;
   console.log(bookingData, "book");
 
-  const booking = await Booking.create(bookingData);
+  const booking = await Booking.create(bookingData).populate(
+    "venue bookingBy vendor"
+  );
   res.status(201).json({ success: true, data: booking });
 });
