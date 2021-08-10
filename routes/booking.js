@@ -15,9 +15,9 @@ router
   // .get(getVenues)
   .post(protect, createBooking);
 
-router.route("/accept").put(acceptBooking);
+router.route("/accept").put(protect, authorize("vendor"), acceptBooking);
 
-router.route("/delete/:id").delete(deleteBooking);
+router.route("/delete/:id").delete(protect, authorize("vendor"), deleteBooking);
 
 router.route("/vendor/:id").get(protect, getAllBookingsByVendor);
 router.route("/venue/:id").get(getAllBookingsByVenue);
