@@ -15,7 +15,7 @@ exports.getVenues = asynchandler(async (req, res, next) => {
 //@route GET /api/v1/venue/vendor/:id
 // @access Private/Admin
 exports.getVenuesByVendorID = asynchandler(async (req, res, next) => {
-  const venues = await Venue.find({ user: req.params.id }).populate(
+  const venues = await Venue.find({ user: req.user._id }).populate(
     "user venueTown"
   );
   res.status(200).json({ success: true, data: venues });
@@ -70,7 +70,6 @@ exports.addVenue = asynchandler(async (req, res, next) => {
   } else {
     return next(new ErrorResponse(`Please upload atleast one image`), 404);
   }
-
 });
 
 // @desc Update venue
@@ -83,7 +82,7 @@ exports.updateVenue = asynchandler(async (req, res, next) => {
     return next(new ErrorResponse(`No venue found`), 404);
   }
 
-  console.log(req.body.venue, 'venue')
+  console.log(req.body.venue, "venue");
   venue = await Venue.findByIdAndUpdate(req.params.id, req.body.venue, {
     new: true,
     runValidators: true,
@@ -115,35 +114,36 @@ exports.deleteVenue = asynchandler(async (req, res, next) => {
 //@route Delete /api/v1/venue/image/:id
 // @access Private
 exports.addImageToVenue = asynchandler(async (req, res, next) => {
-  console.log(req.files.media)
-  if (req.files && req.files.media) { 
-  let venue = await Venue.findById(req.params.id);
+  console.log(req.files.media);
+  if (req.files && req.files.media) {
+    let venue = await Venue.findById(req.params.id);
 
-  if (!venue) {
-    return next(new ErrorResponse(`No venue found`), 404);
-  }
+    if (!venue) {
+      return next(new ErrorResponse(`No venue found`), 404);
+    }
     const url = await uploadMedia(req.files.media, "venue-bazaar");
     if (url && url.res && url.res.url) {
-    
-      venue = await Venue.findByIdAndUpdate(req.params.id, { $push: { images: url.res.url }}, {
-        new: true,
-        runValidators: true,
-      });
-    
+      venue = await Venue.findByIdAndUpdate(
+        req.params.id,
+        { $push: { images: url.res.url } },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+
       res.status(200).json({
         success: true,
         data: venue,
-        url: url.url
+        url: url.url,
       });
     } else {
-        return next(new ErrorResponse(`Error with file upload`), 404);
-  }
-  }
-  else {
-      return next(new ErrorResponse(`Upload image`), 404);
+      return next(new ErrorResponse(`Error with file upload`), 404);
+    }
+  } else {
+    return next(new ErrorResponse(`Upload image`), 404);
   }
 });
-
 
 // @desc Delete an image
 //@route Delete /api/v1/venue/image/:id
@@ -153,14 +153,17 @@ exports.RemoveImageFromVenue = asynchandler(async (req, res, next) => {
   if (!venue) {
     return next(new ErrorResponse(`No venue found`), 404);
   }
-      venue = await Venue.findByIdAndUpdate(req.params.id, { $pull: { images: req.body.url }}, {
-        new: true,
-        runValidators: true,
-      });
-    
-      res.status(200).json({
-        success: true,
-        data: venue,
-       
-      });
+  venue = await Venue.findByIdAndUpdate(
+    req.params.id,
+    { $pull: { images: req.body.url } },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+
+  res.status(200).json({
+    success: true,
+    data: venue,
+  });
 });
