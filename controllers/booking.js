@@ -11,7 +11,7 @@ exports.getAllBookingsByVendor = asynchandler(async (req, res, next) => {
   );
   res
     .status(200)
-    .json({ success: true, count: bookings.length, bookings: bookings });
+    .json({ success: true, count: bookings.length, data: bookings });
 });
 
 // @desc Gett all bookings by venue
