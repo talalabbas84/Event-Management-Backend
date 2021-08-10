@@ -6,7 +6,7 @@ const Booking = require("../models/Booking");
 //@route GET /api/v1/booking/vendor/:id
 // @access Public
 exports.getAllBookingsByVendor = asynchandler(async (req, res, next) => {
-  const bookings = await Booking.find({ vendor: req.params.id }).populate(
+  const bookings = await Booking.find({ vendor: req.user._id }).populate(
     "venue bookingBy vendor"
   );
   res

@@ -19,7 +19,7 @@ router.route("/accept/:id").put(acceptBooking);
 
 router.route("/delete/:id").delete(deleteBooking);
 
-router.route("/vendor/:id").get(getAllBookingsByVendor);
+router.route("/vendor/:id").get(protect, getAllBookingsByVendor);
 router.route("/venue/:id").get(getAllBookingsByVenue);
 
 // router.route("/vendor/:id").get(getVenuesByVendorID);
