@@ -30,7 +30,7 @@ exports.getAllBookingsByVenue = asynchandler(async (req, res, next) => {
 //@route PUT /api/v1/booking/accept/:id
 // @access Public
 exports.acceptBooking = asynchandler(async (req, res, next) => {
-  const booking = await Booking.findByIdAndUpdate(req.params.id, req.body, {
+  const booking = await Booking.findByIdAndUpdate(req.body._id, req.body, {
     new: true,
     runValidators: true,
   });
@@ -53,8 +53,6 @@ exports.createBooking = asynchandler(async (req, res, next) => {
   bookingData.bookingBy = req.user._id;
   console.log(bookingData, "book");
 
-  const booking = await Booking.create(bookingData).populate(
-    "venue bookingBy vendor"
-  );
+  const booking = await Booking.create(bookingData);
   res.status(201).json({ success: true, data: booking });
 });
