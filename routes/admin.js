@@ -4,6 +4,7 @@ const {
   getAllUsers,
   getAllVenues,
   toggleUserAccount,
+  updateVenue,
 } = require(`../controllers/admin`);
 
 // const User = require("../models/User");
@@ -18,5 +19,6 @@ router.route("/users").get(getAllUsers);
 router.route("/venues").get(getAllVenues);
 
 router.route("/users/:id").put(toggleUserAccount);
+router.route("/venues/:id").put(updateVenue);
 
 module.exports = router;
