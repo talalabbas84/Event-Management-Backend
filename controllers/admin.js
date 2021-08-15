@@ -34,3 +34,14 @@ exports.toggleUserAccount = asynchandler(async (req, res, next) => {
   );
   res.status(200).json({ success: true, data: user });
 });
+
+// @desc Update venue by date
+//@route PUT /api/v1/admin/venue/:id
+// @access Private/Admin
+exports.updateVenue = asynchandler(async (req, res, next) => {
+  const venue = await Venue.findByIdAndUpdate(req.params.id, req.body.venue, {
+    new: true,
+    runValidators: true,
+  });
+  res.status(200).json({ success: true, data: venue });
+});
