@@ -23,10 +23,10 @@ exports.getAllVenues = asynchandler(async (req, res, next) => {
 // @desc Toggle user accounts
 //@route POST /api/v1/admin/users/:id
 // @access Private/Admin
-exports.toggleUseAccount = asynchandler(async (req, res, next) => {
+exports.toggleUserAccount = asynchandler(async (req, res, next) => {
   const user = await User.findByIdAndUpdate(
     req.params.id,
-    { AccountActive: false },
+    { accountActive: !req.body.accountActive },
     {
       new: true,
       runValidators: true,
