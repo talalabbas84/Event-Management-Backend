@@ -19,6 +19,8 @@ const venueSchema = new mongoose.Schema({
     ref: "Town",
     required: [true, "Please select town"],
   },
+  FromActiveDate: Boolean,
+  ToActiveDate: Boolean,
   venueCity: {
     type: String,
     required: [true, "Please select city"],
