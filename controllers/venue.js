@@ -46,6 +46,9 @@ exports.addVenue = asynchandler(async (req, res, next) => {
   let url = [];
   const { venue } = req.body;
   const JSONVenue = JSON.parse(venue);
+  if (!venue.venueTown) {
+    return next(new ErrorResponse(`Please select Venue Town`), 404);
+  }
   if (req.files && req.files.media) {
     // if (req.files.media.length) {
 
