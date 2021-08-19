@@ -71,7 +71,8 @@ exports.addVenue = asynchandler(async (req, res, next) => {
         });
       });
     } else {
-      const url = await uploadMedia(req.files.media, "venue-bazaar");
+      const url2 = await uploadMedia(req.files.media, "venue-bazaar");
+      url.push(url2.res.url);
       JSONVenue.images = url;
       JSONVenue.user = req.user._id;
 
