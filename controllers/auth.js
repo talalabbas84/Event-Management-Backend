@@ -116,12 +116,19 @@ exports.login = asynchandler(async (req, res, next) => {
   if (!isMatch) {
     return next(new ErrorResponse("Invalid credentials", 401));
   }
-  if (user.isEmailConfirmed) {
-    sendTokenResponse(user, 200, res);
-  } else {
+  if (!user.isEmailConfirmed) {
     return next(
       new ErrorResponse("Please verify your account before logging in", 401)
     );
+  } else if (!user.accountActive) {
+    return next(
+      new ErrorResponse(
+        "Account is disabled. Please contact Administrator",
+        401
+      )
+    );
+  } else {
+    sendTokenResponse(user, 200, res);
   }
 });
 
@@ -146,10 +153,7 @@ exports.logout = asynchandler(async (req, res) => {
 exports.getMe = asynchandler(async (req, res) => {
   const user = await User.findById(req.user.id);
 
-  res.status(200).json({
-    success: true,
-    data: user,
-  });
+  sendTokenResponse(user, 200, res);
 });
 
 // @desc Update user details
