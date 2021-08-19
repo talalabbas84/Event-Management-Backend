@@ -44,29 +44,43 @@ exports.getVenue = asynchandler(async (req, res, next) => {
 // @access Private
 exports.addVenue = asynchandler(async (req, res, next) => {
   let url = [];
+  const { venue } = req.body;
+  const JSONVenue = JSON.parse(venue);
   if (req.files && req.files.media) {
-    const promises = req.files.media.map(async (media) => {
-      const url1 = await uploadMedia(media, "venue-bazaar");
-      url.push(url1.res.url);
-    });
+    // if (req.files.media.length) {
 
-    const results = Promise.all(promises).then(async () => {
-      const { venue } = req.body;
-      console.log(req.user._id);
+    // }
+    if (Array.isArray(req.files.media)) {
+      const promises = req.files.media.map(async (media) => {
+        const url1 = await uploadMedia(media, "venue-bazaar");
+        url.push(url1.res.url);
+      });
 
-      console.log(venue);
-      const JSONVenue = JSON.parse(venue);
+      const results = Promise.all(promises).then(async () => {
+        console.log(req.user._id);
+
+        console.log(venue);
+
+        JSONVenue.images = url;
+        JSONVenue.user = req.user._id;
+
+        const venueData = await Venue.create(JSONVenue);
+        return res.status(200).json({
+          success: true,
+          venue: venueData,
+        });
+      });
+    } else {
+      const url = await uploadMedia(req.files.media, "venue-bazaar");
       JSONVenue.images = url;
       JSONVenue.user = req.user._id;
-      // const newvenue = {...JSONVenue , user }
-      // console.log({...venue});
-      // console.log({ ...JSON.parse(venue) });
+
       const venueData = await Venue.create(JSONVenue);
       return res.status(200).json({
         success: true,
         venue: venueData,
       });
-    });
+    }
   } else {
     return next(new ErrorResponse(`Please upload atleast one image`), 404);
   }
