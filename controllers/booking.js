@@ -51,7 +51,6 @@ exports.deleteBooking = asynchandler(async (req, res, next) => {
 exports.createBooking = asynchandler(async (req, res, next) => {
   const bookingData = req.body;
   bookingData.bookingBy = req.user._id;
-  console.log(bookingData, "book");
 
   const booking = await Booking.create(bookingData);
   res.status(201).json({ success: true, data: booking });

@@ -39,7 +39,6 @@ exports.toggleUserAccount = asynchandler(async (req, res, next) => {
 //@route PUT /api/v1/admin/venue/:id
 // @access Private/Admin
 exports.updateVenue = asynchandler(async (req, res, next) => {
-  console.log(req.body, "req");
   const venue = await Venue.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,

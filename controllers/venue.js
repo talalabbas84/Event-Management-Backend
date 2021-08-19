@@ -60,10 +60,6 @@ exports.addVenue = asynchandler(async (req, res, next) => {
       });
 
       const results = Promise.all(promises).then(async () => {
-        console.log(req.user._id);
-
-        console.log(venue);
-
         JSONVenue.images = url;
         JSONVenue.user = req.user._id;
 
@@ -100,7 +96,6 @@ exports.updateVenue = asynchandler(async (req, res, next) => {
     return next(new ErrorResponse(`No venue found`), 404);
   }
 
-  console.log(req.body.venue, "venue");
   venue = await Venue.findByIdAndUpdate(req.params.id, req.body.venue, {
     new: true,
     runValidators: true,
@@ -132,7 +127,6 @@ exports.deleteVenue = asynchandler(async (req, res, next) => {
 //@route Delete /api/v1/venue/image/:id
 // @access Private
 exports.addImageToVenue = asynchandler(async (req, res, next) => {
-  console.log(req.files.media);
   if (req.files && req.files.media) {
     let venue = await Venue.findById(req.params.id);
 

@@ -2,7 +2,8 @@ const crypto = require("crypto");
 
 const User = require(`../models/User`);
 const ErrorResponse = require(`../utils/errorResponse`);
-const sendEmail = require(`../utils/sendEmail`);
+// const sendEmail = require(`../utils/sendEmail`);
+const sendMessage = require(`../utils/sendMessage`);
 const asynchandler = require(`../middleware/async`);
 
 //@desc Register user
@@ -86,8 +87,9 @@ exports.confirmEmail = asynchandler(async (req, res, next) => {
 
   // save
   user.save({ validateBeforeSave: false });
-
-  return res.redirect("http://localhost:3000/");
+  // const URL = "http://localhost:3000/";
+  const URL = "http://venuebazar.com/";
+  return res.redirect(URL);
   // return token
   // sendTokenResponse(user, 200, res);
 });
@@ -97,6 +99,11 @@ exports.confirmEmail = asynchandler(async (req, res, next) => {
 // @access Public
 exports.login = asynchandler(async (req, res, next) => {
   const { email, password } = req.body;
+
+  // await sendMessage({
+  //   message: "logged",
+  //   phoneNo: "+923059674167",
+  // });
 
   //Validate email & password
   if (!email || !password) {
@@ -261,8 +268,6 @@ exports.resetPassword = asynchandler(async (req, res, next) => {
 
 // Get token from model, create cookie and send response
 const sendTokenResponse = (user, statusCode, res) => {
-  console.log(user);
-
   //Create token
   const token = user.getSignedJwtToken();
 
